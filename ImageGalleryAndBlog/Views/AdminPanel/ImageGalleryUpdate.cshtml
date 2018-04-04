@@ -1,0 +1,65 @@
+﻿@model ImageGalleryAndBlog.Models.ImageUpdate
+
+<section>
+
+    <div id="page-wrapper">
+
+        <div class="graphs">
+
+            <h3 class="blank1" style="text-align: center">Image Gallery Database updating record</h3>
+
+            <form asp-action="ImageUpdateByUlr"
+                  method="post"
+                  enctype="multipart/form-data"
+                  id="upload-form">
+
+                <div class="form-group">
+                    <label for="focusedinput" class="col-sm-2 control-label">Image URL (Atnaujinamo)</label>
+                    <div class="col-sm-12">
+                        <input asp-for="OldUrl" required type="text" class="form-control1" id="focusedinput"
+                               placeholder="Type image category here">
+                        <span asp-validation-for="OldUrl" class="text-danger"></span>
+                        <div class="col-sm-6 jlkdfj1">
+                            <p class="help-block">Čia įvedamas Url Paveikslėlio kuris bus atnaujintas</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="focusedinput" class="col-sm-2 control-label">Image Category</label>
+                    <div class="col-sm-12">
+                        <input asp-for="Category" type="text" class="form-control1" id="focusedinput"
+                               placeholder="Type image category here">
+                        <div class="col-sm-6 jlkdfj1">
+                            <p class="help-block">Jei langą paliksite tuščia bus palikta sena reikšmė</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="focusedinput" class="col-sm-2 control-label">Image Tags</label>
+                    <div class="col-sm-12">
+                        <input asp-for="Tags" type="text" class="form-control1"
+                               placeholder="Type image tags here">
+                        <div class="col-sm-12 jlkdfj1">
+                            <p class="help-block">Tags atskirti kableliu (,)</p>
+                        </div>
+                        <div class="col-sm-12 jlkdfj1">
+                            <p class="help-block">
+                                Old tags will be deleted jeigu įvesite kažką, jei langas bus tusčias tag's
+                                liks tie patys
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-sm-12">
+                        <button class="btn-success btn">Update</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+@await Html.PartialAsync("_ValidationScriptsPartial")

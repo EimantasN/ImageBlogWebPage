@@ -1,0 +1,53 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using ImageGalleryAndBlog.Data.Models
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+<!--notification menu start -->
+<div class="menu-right">
+
+    <div class="user-panel-top">
+
+        <div class="profile_details">
+            <ul>
+                <li class="dropdown profile_details_drop">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                        <div class="profile_img">
+                            <span style="background: url(https://cdn2.iconfinder.com/data/icons/people-diversity-portraits/32/i1-01-512.png) no-repeat center; background-size: contain"> </span>
+                            <div class="user-name">
+                                <p>Ieva<span>Administrator</span></p>
+                            </div>
+                            <i class="lnr lnr-chevron-down"></i>
+                            <i class="lnr lnr-chevron-up"></i>
+                            <div class="clearfix"></div>
+                        </div>
+                    </a>
+                    <ul class="dropdown-menu drp-mnu">
+                        <li>
+                            <form asp-area="" asp-controller="Account" asp-action="Logout" method="post" id="logoutForm">
+                                   <button type="submit" class="btn btn-link navbar-btn">Log out</button>
+                            </form>
+                        </li>
+                    </ul>
+                </li>
+                <div class="clearfix"> </div>
+            </ul>
+        </div>
+
+        <div class="social_icons">
+            <div class="col-md-4 social_icons-left">
+                <a href="#" class="yui">
+                    <i class="fa fa-facebook i1"></i><span>0<sup>+</sup> Likes</span>
+                </a>
+            </div>
+            <div class="col-md-4 social_icons-left pinterest">
+                <a href="#">
+                    <i class="fa fa-google-plus i1"></i><span>0<sup>+</sup> Shares</span>
+                </a>
+            </div>
+            <div class="clearfix"> </div>
+        </div>
+
+        <div class="clearfix"></div>
+    </div>
+</div>

@@ -1,0 +1,19 @@
+﻿@model ImageGalleryAndBlog.Models.Send
+
+<div class="main-grid">
+
+    <!--TOP NAVIGATION-->
+    @{
+        Html.RenderPartial("_Navigation", Model.Kat);
+    }
+
+    <form class="contact-grid" style="height: 70vh">
+
+        <div class="contact-header">
+            <h1>@Model.Header</h1>
+            <p>@Model.Message</p>
+        </div>
+    </form>
+</div>
+
+@await Html.PartialAsync("_ValidationScriptsPartial")

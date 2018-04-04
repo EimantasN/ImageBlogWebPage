@@ -1,0 +1,39 @@
+﻿@using ImageGalleryAndBlog.Models.AccountViewModels
+@model LoginWith2faViewModel
+@{
+    ViewData["Title"] = "Two-factor authentication";
+}
+
+<h2>@ViewData["Title"]</h2>
+<hr />
+
+<div class="sign-in-up">
+    <section>
+        <div id="page-wrapper" class="sign-in-wrapper">
+            <div class="graphs">
+                <div class="sign-in-form">
+                    <div class="sign-in-form-top">
+                        <p style="font-size: 16px">Your login is protected with an authenticator app. Enter your authenticator code below.</p>
+                    </div>
+                    <div class="signin">
+                        <form method="post" asp-route-returnUrl="@ViewData["ReturnUrl"]">
+                            <div asp-validation-summary="All" class="text-danger"></div>
+
+                            <div class="log-input">
+                                <div class="log-input-left">
+                                    <label asp-for="TwoFactorCode"></label>
+                                    <input asp-for="TwoFactorCode" class="form-control" autocomplete="off" />
+                                    <span asp-validation-for="TwoFactorCode" class="text-danger"></span>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <input type="submit" value="Confirm">
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+@await Html.PartialAsync("_ValidationScriptsPartial")

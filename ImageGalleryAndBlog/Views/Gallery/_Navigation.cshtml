@@ -1,0 +1,40 @@
+﻿@model string[]
+<!--TOP NAVIGATION-->
+
+<div class="top-grid">
+
+    <div class="meniu-container">
+        <div class="line1"></div>
+        <div class="line2 "></div>
+        <div class="line3 "></div>
+    </div>
+
+    <div class="navigation">
+        <ul>
+            <li class="dropdown">
+                <a href="#" class="nav-active">GALLERY</a><span class="down-caret"></span>
+                <div class="dropdown-content">
+                    @{
+                        foreach (string a in Model)
+                        {
+                            <a class="active" asp-controller="Gallery" asp-action="Index" asp-route-category="@a">@a</a>
+                        }
+                    }
+                </div>
+            </li>
+            <li class="">
+                <a asp-controller="Gallery" asp-action="Blog">BLOG</a>
+            </li>
+            <li class="">
+                <a asp-controller="Gallery" asp-action="About">ABOUT</a>
+            </li>
+            <li class="">
+                <a asp-controller="Gallery" asp-action="Contact">CONTACT</a>
+            </li>
+        </ul>
+    </div>
+
+    <div class="logo">
+        <h1>Photography</h1>
+    </div>
+</div>

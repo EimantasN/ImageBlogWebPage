@@ -1,0 +1,100 @@
+﻿@using ImageGalleryAndBlog.Data.Models
+@model ImageGalleryAndBlog.Models.GalleryIndexModel
+
+<!--TOP LOGO AND INFO-->
+<div class="main-grid">
+
+    @{
+        Html.RenderPartial("_Navigation", Model.Kat);
+    }
+
+    <div class="img-grid">
+
+        @{
+            string[] klases = {"one-collum", "two-collum", "three-collum"};
+            int sekantis = 0;
+            foreach (string a in klases)
+            {
+                <div class="@a">
+                    @for (int i = sekantis; i < Model.Images.Count(); i = i + 3)
+                    {
+                        GalleryImage image = Model.Images.ElementAt(i);
+                        <img meta="@Model.GetTags(image)" alt ="@Model.GetTags(image)" Title ="Posted @image.Created" class="col-12 img-responsive gap" src="@image.Url" id="@i">
+                    }
+                </div>
+                sekantis++;
+            }
+        }
+    </div>
+    @*IMG GRID PABAIGA*@
+
+    <div class="img-wiev" style="display: none">
+
+        <div>
+            <a href="#" class="close-classic"></a>
+        </div>
+
+        <div class="img-wiev-img" id="slider">
+
+            <ul class="slides">
+                @{
+                    var last = Model.Images.Count() - 1;
+                    var first = 0;
+                    for (var i = 0; i < Model.Images.Count(); i++)
+                    {
+                        string imageUrl = Model.Images.ElementAt(i).Url;
+
+                        var next = i + 1;
+                        var before = i - 1;
+
+                        if (i == 0)
+                        {
+                            <input type="radio" name="radio-btn" id="img-@i" />
+                            <li class="slide-container">
+                                <div class="slide">
+                                    <img src="@imageUrl" id="@i" />
+                                </div>
+                                <div class="nav">
+                                    <label for="img-@last" class="prev">&#x2039;</label>
+                                    <label for="img-@next" class="next">&#x203a;</label>
+                                </div>
+                            </li>
+                        }
+
+                        if (i != 0 && i != last)
+                        {
+                            <input type="radio" name="radio-btn" id="img-@i" />
+                            <li class="slide-container">
+                                <div class="slide">
+                                    <img src="@imageUrl" id="@i" />
+                                </div>
+                                <div class="nav">
+                                    <label for="img-@before" class="prev">&#x2039;</label>
+                                    <label for="img-@next" class="next">&#x203a;</label>
+                                </div>
+                            </li>
+                        }
+
+                        if (i == last)
+                        {
+                            <input type="radio" name="radio-btn" id="img-@i" />
+                            <li class="slide-container">
+                                <div class="slide">
+                                    <img src="@imageUrl" id="@i" />
+                                </div>
+                                <div class="nav">
+                                    <label for="img-@before" class="prev">&#x2039;</label>
+                                    <label for="img-@first" class="next">&#x203a;</label>
+                                </div>
+                            </li>
+                        }
+                    }
+                }
+            </ul>
+            @*$data = $rows[$x];
+                $img = $data['url'];
+                int next = i + 1;
+                int before = i - 1;*@
+        </div>
+    </div>
+</div>

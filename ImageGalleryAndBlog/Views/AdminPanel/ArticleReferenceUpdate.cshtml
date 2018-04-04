@@ -1,0 +1,81 @@
+﻿<section>
+
+    <div id="page-wrapper">
+
+        <div class="graphs">
+
+            <h3 class="blank1" style="text-align: center">Updating references in article</h3>
+
+            <div class="form-group">
+                <label for="focusedinput" class="col-sm-12 control-label">
+                    First enter the title of the article, the
+                    reference of which will be updated
+                </label>
+            </div>
+
+            <div class="form-group">
+                <label for="focusedinput" class="col-sm-12 control-label" style="height: 25px"></label>
+            </div>
+
+            <div class="form-group">
+                <label for="focusedinput" class="col-sm-2 control-label">Article Title</label>
+                <div class="col-sm-12">
+                    <input type="text" class="form-control1" id="focusedinput"
+                           placeholder="Type reference article title here">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="focusedinput" class="col-sm-12 control-label" style="height: 25px"></label>
+            </div>
+
+            <div class="form-group">
+                <label for="focusedinput" class="col-sm-12 control-label">Left blank spaces will not be updated and will remain old</label>
+            </div>
+
+            <div class="form-group">
+                <label for="focusedinput" class="col-sm-12 control-label" style="height: 25px"></label>
+            </div>
+
+            <div class="form-group">
+                <label for="focusedinput" class="col-sm-2 control-label">Author</label>
+                <div class="col-sm-12">
+                    <input type="text" class="form-control1"
+                           placeholder="Type reference author name here">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="focusedinput" class="col-sm-2 control-label">Title</label>
+                <div class="col-sm-12">
+                    <input type="text" class="form-control1"
+                           placeholder="Type reference article title here">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="focusedinput" class="col-sm-2 control-label">Publish</label>
+                <div class="col-sm-12">
+                    <input type="text" class="form-control1"
+                           placeholder="Type where it publish here">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="focusedinput" class="col-sm-2 control-label">Date</label>
+                <div class="col-sm-12">
+                    <input type="date" class="form-control1"
+                           placeholder="Choose reference publish date">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-12">
+                    <button class="btn-success btn">Update</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@await Html.PartialAsync("_ValidationScriptsPartial")

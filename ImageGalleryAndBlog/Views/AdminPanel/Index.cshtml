@@ -1,0 +1,52 @@
+﻿@model ImageGalleryAndBlog.Models.IndexModel
+<body class="sticky-header left-side-collapsed">
+    <section>
+
+        @{
+            Html.RenderPartial("_side_navigation.cshtml");
+        }
+
+        <div class="main-content">
+
+            <div class="header-section">
+
+                <a class="toggle-btn  menu-collapsed">
+                    <i class="fa fa-bars"></i>
+                </a>
+
+                @{
+                    Html.RenderPartial("_top_navigation.cshtml");
+                }
+            </div>
+            <!-- //header-ends -->
+            <div id="page-wrapper">
+                <div class="graphs">
+                    <div class="col-12 widget1 align-content-center">
+                        <div class="col-12 r3_counter_box">
+                            <i class="fa fa-eye"></i>
+                            <div class="stats">
+                                <h5>@Model.Visitors.Count()<span> - Visitors this month</span></h5>
+                                <div class="grow grow3">
+                                    <p>Visitors</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="col-12 widget1 align-content-center">
+                        <div class="col-12 r3_counter_box">
+                            <i class="fa fa-eye"></i>
+                            <div class="stats">
+                                <h5>@Model.Visitors.Select(x=> x.Ip).Distinct().Count()<span> - Unique Visitors this month</span></h5>
+                                <div class="grow grow3">
+                                    <p>Uniqnue Visitors</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>

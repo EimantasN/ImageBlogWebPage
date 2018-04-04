@@ -1,0 +1,107 @@
+﻿@model ImageGalleryAndBlog.Models.BlogModel
+
+<div class="main-grid">
+    <!--TOP NAVIGATION-->
+    @{
+        Html.RenderPartial("_Navigation", Model.Kat);
+    }
+
+    <div class="blog-side">
+        <div class="blog-subscribe">
+            <div class="subscribe-header">
+                <p> SUBSCRIBE TO OUR<br />NEWSLETTER</p>
+            </div>
+            <div class="wrapper">
+                <div class="subscribe">
+                    <form asp-action="AddSubscriber">
+                        <input asp-for="email" type="email" placeholder="Enter your e-mail:" required />
+                        <span asp-validation-for="email" class="text-danger"></span>
+                        <input type="submit" />
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="blog-categories">
+            <div class="subscribe-header">
+                <p>CATEGORIES</p>
+            </div>
+            <div class="categories-list">
+                <div id="list">
+                    <ul style="text-align: center">
+                        @{
+
+                            foreach (string a in Model.ArticleCategorys)
+                            {
+                                <li meta="@a">
+                                    <a asp-action="Blog" asp-controller="Gallery" asp-route-category="@a">@a</a>
+                                </li>
+                            }
+                        }
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="blog-tags">
+            <div class="subscribe-header">
+                <p>Tag's</p>
+            </div>
+            <div class="categories-list">
+                <ul class="tags">
+                    @{
+                        foreach (string a in Model.Articletags)
+                        {
+                            <li meta="@a">
+                                <a asp-action="Blog" asp-controller="Gallery" asp-route-tag="@a">@a</a>
+                            </li>
+                        }
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="blog-grid">
+        @{
+            foreach (var arc in Model.Article)
+            {
+                <article meta="@Model.GetTags(arc)" class="article">
+                    <div class="img-holder">
+                        <img class="blog-img" src="@arc.ImgUrl" alt="Ieva Photography Photo">
+                    </div>
+                    <div class="content-holder">
+                        <header meta="@arc.Title" class="header" alt="@arc.Title">
+                            <h1>
+                                <a asp-controller="Gallery" asp-action="FullArticle" asp-route-id="@arc.Id">@arc.Title</a>
+                            </h1>
+                            <span class="bottom-line"></span>
+                        </header>
+                        <div class="sub-text">
+                            <p>@Html.Raw(arc.SubText)</p>
+                        </div>
+                        <div alt="Date of creation: @arc.Created" class="date">
+                            <p>@arc.Created</p>
+                        </div>
+                    </div>
+
+
+                    <div class="back">
+                        <img class="blog-img" src="https://cdn3.iconfinder.com/data/icons/gray-toolbar-4/512/undo-512.png">
+                    </div>
+                </article>
+            }
+        }
+
+        <div class="pag-container">
+            <ul class="pag"></ul>
+        </div>
+    </div>
+
+    <!--Footer-->
+    @{
+        Html.RenderPartial("_Footer");
+    }
+</div>
+
+@await Html.PartialAsync("_ValidationScriptsPartial")

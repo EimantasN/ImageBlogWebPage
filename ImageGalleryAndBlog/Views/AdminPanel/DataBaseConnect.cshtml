@@ -1,0 +1,111 @@
+﻿<body class="sticky-header left-side-collapsed">
+    <section>
+
+        @{
+            Html.RenderPartial("_side_navigation.cshtml");
+        }
+
+        <!-- main content start-->
+        <div class="main-content">
+            <!-- header-starts -->
+            <div class="header-section">
+
+                <!--toggle button start-->
+                <a class="toggle-btn  menu-collapsed">
+                    <i class="fa fa-bars"></i>
+                </a>
+                <!--toggle button end-->
+
+                @{
+                    Html.RenderPartial("_top_navigation.cshtml");
+                }
+            </div>
+            <!-- //header-ends -->
+            <div id="page-wrapper">
+                <div class="graphs">
+                    <h3 class="blank1">Manage DataBase's</h3>
+                    <div class="grid_3 grid_5">
+                        <h3>Data Tables</h3>
+                        <div class="but_list">
+
+                            <div class="col-md-12 page_1">
+                                <p>Visa informacija apie jau esamus įrašus pasiekiamas table skiltyje, čia atliekama INSERT, DELETE, UPDATE operacijos skirtingose lentelėse</p>
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th style="word-break: break-all" width="25%">Data Table Name</th>
+                                            <th style="word-break: break-all" width="25%">Insert new record</th>
+                                            <th style="word-break: break-all" width="25%">Delete existing record</th>
+                                            <th style="word-break: break-all" width="25%">Update existing record</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td style="word-break: break-all">Image Gallery</td>
+                                            <td>
+                                                <button type="button" class="btn btn-default">
+                                                    <a asp-controller="AdminPanel" asp-action="ImageGalleryInsert">Insert</a>
+                                                </button>
+                                            </td>
+                                            <td>
+                                                <button type="button" class="btn btn-danger">
+                                                    <a asp-controller="AdminPanel" asp-action="ImageGalleryDelete">Delete</a>
+                                                </button>
+                                            </td>
+                                            <td>
+                                                <button type="button" class="btn btn-warning warning_22">
+                                                    <a asp-controller="AdminPanel" asp-action="ImageGalleryUpdate">Update</a>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>Article</td>
+                                            <td>
+                                                <button type="button" class="btn btn-default">
+                                                    <a asp-controller="AdminPanel" asp-action="ArticleInsert">Insert</a>
+                                                </button>
+                                            </td>
+                                            <td>
+                                                <button type="button" class="btn btn-danger">
+                                                    <a asp-controller="AdminPanel" asp-action="ArticleDelete">Delete</a>
+                                                </button>
+                                            </td>
+                                            <td>
+                                                <button type="button" class="btn btn-warning warning_22">
+                                                    <a asp-controller="AdminPanel" asp-action="ArticleUpdate">Update</a>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        <tr style="display: none">
+                                            <td>Article References</td>
+                                            <td>
+                                                <button type="button" class="btn btn-default">
+                                                    <a asp-controller="AdminPanel" asp-action="ArticleReferenceInsert">Insert</a>
+                                                </button>
+                                            </td>
+                                            <td>
+                                                <button type="button" class="btn btn-danger">
+                                                    <a asp-controller="AdminPanel" asp-action="ArticleReferenceDelete">Delete</a>
+                                                </button>
+                                            </td>
+                                            <td>
+                                                <button type="button" class="btn btn-warning warning_22">
+                                                    <a asp-controller="AdminPanel" asp-action="ArticleReferenceUpdate">Update</a>
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <div class="clearfix"> </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--body wrapper start-->
+        </div>
+
+        <!-- main content end-->
+    </section>
+</body>

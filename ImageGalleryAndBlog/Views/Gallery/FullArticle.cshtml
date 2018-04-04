@@ -1,0 +1,95 @@
+﻿@using ImageGalleryAndBlog.Data.Models
+@model ImageGalleryAndBlog.Models.ArticleModel
+
+<div class="main-grid">
+
+    <div class="article-active">
+
+        <div class="content-holder">
+            <div class="header">
+                <h1><a href="#">@Model.Article.Title</a></h1>
+                <span class="bottom-line"></span>
+            </div>
+            <div class="date">
+                <p>@Model.Article.Created</p>
+            </div>
+        </div>
+
+        <div class="img-holder">
+            <img class="blog-img" src="@Model.Article.ImgUrl" alt="" style="">
+        </div>
+
+        <div class="text">
+            @Html.Raw(Model.Article.Text)
+        </div>
+
+        <div class="comment-container">
+            @if (Model.Article.ArticleComments.Any())
+            {
+                <h2 style="font-family: 'Julius Sans One', sans-serif">Comments</h2>
+
+
+                foreach (ArticleComments com in Model.Article.ArticleComments)
+                {
+                    <div class="media">
+                        <div class="media-left">
+                            <a>
+                                <img class="media-object" src="https://cdn1.iconfinder.com/data/icons/hipster-4/512/hipster-fashion-style-beard-man-glasses-512.png" style="width: 64px; height: 64px;">
+                            </a>
+                        </div>
+                        <div class="media-body">
+                            <h4 class="media-heading">@com.Author</h4>
+                            <p class="media-text">
+                                @com.Text
+                            </p>
+                            <div class="media-date" alt="Date of creation: 1/21/18 7:51:00 PM" class="date">
+                                <p>@com.Created</p>
+                            </div>
+                        </div>
+                        <div class="clearfix"> </div>
+                    </div>
+                    <hr />
+                }
+            }
+
+            <form asp-action="AddComment"
+                  style="padding-top: 50px; width: 100%; float: left"
+                  enctype="multipart/form-data">
+
+                <h2 style="font-family: 'Julius Sans One', sans-serif">Leave a comment</h2>
+
+                <div class="form-group" style="width: 48%; float: left">
+                    <label class="control-label">First Name</label>
+                    <input asp-for="FirstName" required type="text" class="form-control1" id="focusedinput" placeholder="Type first name here">
+                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                </div>
+
+                <div class="form-group" style="width: 48%; float: right">
+                    <label class="control-label">Last Name</label>
+                    <input asp-for="LastName" required type="text" class="form-control1" id="focusedinput" placeholder="Type last name here">
+                    <span asp-validation-for="LastName" class="text-danger"></span>
+                </div>
+
+                <div class="form-group" style="width: 75%; float: left">
+                    <label class="control-label">Email Adress</label>
+                    <input asp-for="Email" required type="email" class="form-control1" id="focusedinput" placeholder="Type email here">
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+
+                <div class="form-group" style="width: 100%; float: left; padding-bottom: 0">
+                    <label class="control-label">Message</label>
+                    <textarea asp-for="Message" required type="text" rows="20" style="height: 125px; min-width: 100%; max-width: 100%; resize: none" class="form-control1" placeholder="Your message goes here"></textarea>
+                    <span asp-validation-for="Message" class="text-danger"></span>
+                </div>
+                <div style="display: none">
+                    <input asp-for="Id" type="number" value="@Model.Article.Id">
+                </div>
+
+                <div class="form-group comments-submit" style="width: 100%; float: left">
+                    <input type="submit" value="Comment">
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,85 @@
+﻿@model ImageGalleryAndBlog.Models.AboutModel
+
+<div class="main-grid">
+
+    <!--TOP NAVIGATION-->
+    @{
+        Html.RenderPartial("_Navigation", Model.Kat);
+    }
+
+    <div class="about-grid">
+        <article>
+            <p style="text-align: justify">I’m Ieva, an amateur photographer wandering in between Lithuania and the UK. Sometimes I get lost on my way home from the university and explore new countries and sites. Therefore photography. Photography for me is much more than just a way to document memories. It’s a silent storytelling. When I shoot people, I try to capture their stories, their emotions, their thoughts. When I shoot buildings, I try to capture the spirit of the people who live there, the mood of the everyday life here.</p>
+
+            <p style="text-align: justify">I started doing photography when I was absolutely lost in my life. After already changing a couple of degree courses at the university, I still couldn’t find a subject that I would enjoy and would imagine myself doing for the rest of my life. I was getting slightly frustrated and hopeless, thinking that I’m simply not meant to find my way. However, I knew that I wanted to do something creative and dynamic in my life. But what? Photography was an answer that came naturally to me when I discovered an abandoned camera at home. I have never abandoned it again. I am still learning a lot about photography and I want to share the whole process of my improvement here.</p>
+
+            <p style="text-align: justify">What I’ve understood so far, is that doing photography is an eye-opening, perspective-changing experience. When you do it, you always wander through the narrowest, undiscovered streets of the cities, through the backyards of the old towns to find the most scenic locations. You always lift your eyes to the sky to capture the smallest architectural details. I have discovered so much unseen beauty in my own native city after taking a camera to my hands simply because I started looking around and actually seeing the things that have always been in front of my eyes. You will never again have a single regular walk after you get immersed into photography… because everything you see around is a perfect shot in your head!</p>
+
+            <hr>
+            <p>&nbsp;</p>
+        </article>
+    </div>
+
+    <div class="albums">
+
+        <div class="albums-header">
+            <hi>Album's</hi>
+        </div>
+        @{
+            string[] klases = {"one-collum", "two-collum", "three-collum"};
+            int sekantis = 0;
+            foreach (string a in klases)
+            {
+                <div class="@a">
+                    @for (int i = sekantis; i < Model.Images.Count(); i = i + 3)
+                    {
+                        var image = Model.Images.ElementAt(i);
+                        <div class="album-item">
+                            <figure>
+                                <img class="image" src="@image.Url" />
+                                <div class="overlay">
+                                    <div class="text-album">
+                                        <a
+                                            asp-controller="Gallery"
+                                            asp-action="Index"
+                                            meta ="@image.Category"
+                                            asp-route-category="@image.Category">
+                                            @image.Category
+                                        </a>
+                                    </div>
+                                </div>
+                            </figure>
+                        </div>
+                    }
+                </div>
+                sekantis++;
+            }
+        }
+        @*@{
+            foreach (var image in Model.Images)
+            {
+                <div class="album-item">
+                    <figure>
+                        <img class="image" src="@image.Url" />
+                        <div class="overlay">
+                            <div class="text-album">
+                                <a
+                                    asp-controller="Gallery"
+                                    asp-action="Index"
+                                    meta ="@image.Category"
+                                    asp-route-category="@image.Category">
+                                    @image.Category
+                                </a>
+                            </div>
+                        </div>
+                    </figure>
+                </div>
+            }
+        }*@
+    </div>
+
+    <!--Footer-->
+    @{
+        Html.RenderPartial("_Footer");
+    }
+</div>

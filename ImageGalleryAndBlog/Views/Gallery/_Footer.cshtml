@@ -1,0 +1,31 @@
+﻿@using Microsoft.AspNetCore.Identity
+@using ImageGalleryAndBlog.Data.Models
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+<footer class="footer">
+    <div class="social">
+        <ul class="list-inline">
+            <a href="#" title="Like us!">
+                <i class="fa fa-facebook fa-2x"></i>
+            </a>
+            <a href="#" title="Tweet us!">
+                <i class="fa fa-twitter fa-2x"></i>
+            </a>
+            <a href="#" title="Connect wih us!">
+                <i class="fa fa-linkedin fa-2x"></i>
+            </a>
+            <a asp-controller="Gallery" asp-action="Contact" title="Mail me!">
+                <i class="fa fa-envelope-o fa-2x"></i>
+            </a>
+        </ul>
+    </div>
+
+    <div class="rights">
+        All rights rezerved<br>Website Created By: Eimantas Noreika - <a href="https://deveim.com" style="color: black; text-decoration: none">DevEim.com</a> - @DateTime.Now.Year
+        <br>
+        <a style="color: black; text-decoration: none" asp-controller="AdminPanel" asp-action="Index">Admin Panel</a>
+    </div>
+
+</footer>
